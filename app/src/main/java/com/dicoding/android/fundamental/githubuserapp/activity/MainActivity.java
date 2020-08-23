@@ -98,10 +98,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Pojogithub> call, Response<Pojogithub> response) {
                 if (response.isSuccessful()) {
                     //Mengambil data dari internet masuk ke Data Github
-                    assert response.body() != null;
-                    dataModelUser = (ArrayList<Pojogithub>) response.body().getItems();
+//                    assert response.body() != null;
+                    showProgress(true);
+                    List<Pojogithub> results = (List<Pojogithub>) response.body();
                     //Set Adapter ke Recycler View
-                    AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), dataModelUser);
+                    AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) results);
                     rvProfilgithub.setAdapter(adapterGithubapp);
 //                    userrv.setAdapter(new UsersAdapter(MainActivity.this, gitdata));
                     showProgress(false);
@@ -133,6 +134,34 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.option_menu, menu);
+        
+        SearchManager sm = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView sv = (SearchView) menu.findItem(R.id.search).getActionView();
+
+        if (sm !=null){
+            sv.setSearchableInfo(sm.getSearchableInfo(getComponentName()));
+            sv.setIconifiedByDefault(false);
+            sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    showProgress(true);
+                    if (s != null) {
+                        getDataOnline(s);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Insert Username First", Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+//                    getDataOnline(s);
+                    return true;
+                }
+            });
+
+        }
+
         return true;
     }
 
