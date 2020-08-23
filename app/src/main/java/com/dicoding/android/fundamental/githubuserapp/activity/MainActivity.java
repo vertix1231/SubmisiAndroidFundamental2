@@ -38,6 +38,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rvProfilgithub;
+//    private List<Pojogithub> dataModelUser = new ArrayList<>();
     private ArrayList<Pojogithub> dataModelUser = new ArrayList<>();
     private  TextView username;
     private CircleImageView profillist;
@@ -92,22 +93,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getDataOnline(final String username) {
-        Call<Pojogithub> requests = (Call<Pojogithub>) ServiceGenerator.getRetrofitInstance().create(GithubService.class);
-        requests.enqueue(new Callback<Pojogithub>() {
+//        Call<Pojogithub> requests = (Call<Pojogithub>) ServiceGenerator.getRetrofitInstance().create(GithubService.class);
+        GithubService service = ServiceGenerator.getRetrofitInstance().create(GithubService.class);
+        Call<Pojogithub> calls = service.getUser(username);
+        calls.enqueue(new Callback<Pojogithub>() {
             @Override
             public void onResponse(Call<Pojogithub> call, Response<Pojogithub> response) {
                 if (response.isSuccessful()) {
                     //Mengambil data dari internet masuk ke Data Github
-//                    assert response.body() != null;
-                    showProgress(true);
-                    List<Pojogithub> results = (List<Pojogithub>) response.body();
+                    assert response.body() != null;
+//                    dataModelUser = response.body().getItems();
                     //Set Adapter ke Recycler View
-                    AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) results);
+                    AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) dataModelUser);
                     rvProfilgithub.setAdapter(adapterGithubapp);
-//                    userrv.setAdapter(new UsersAdapter(MainActivity.this, gitdata));
                     showProgress(false);
-
-                } else {
+                }
+                else {
                     Toast.makeText(MainActivity.this, "Request Failed", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -115,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Pojogithub> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Request Failure" + t.getMessage(), Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showRecyclerList(){
         rvProfilgithub.setLayoutManager(new LinearLayoutManager(this));
-        AdapterGithubapp listgithubAdapter = new AdapterGithubapp(this, dataModelUser);   //LIAT LAGI SAMA LIAT LAGI DI CONTRUCTOR BLANK DI ADAPTER
+        AdapterGithubapp listgithubAdapter = new AdapterGithubapp(this, (ArrayList<Pojogithub>) dataModelUser);   //LIAT LAGI SAMA LIAT LAGI DI CONTRUCTOR BLANK DI ADAPTER
         rvProfilgithub.setAdapter(listgithubAdapter);
     }
 
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onQueryTextSubmit(String s) {
                     showProgress(true);
                     if (s != null) {
-                        getDataOnline(s);
+//                        getDataOnline(s);
                     } else {
                         Toast.makeText(MainActivity.this, "Insert Username First", Toast.LENGTH_SHORT).show();
                     }
