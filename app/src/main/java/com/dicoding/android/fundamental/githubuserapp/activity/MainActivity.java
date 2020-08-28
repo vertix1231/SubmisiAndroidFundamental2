@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         rvProfilgithub =findViewById(R.id.rvprofilgithub);
         username = findViewById(R.id.tvusernamelist);
         profillist = findViewById(R.id.ivImage);
+        progress = findViewById(R.id.progressBar);
 
         rvProfilgithub.setHasFixedSize(true);
 //        dataModelUser.addAll(LocalData.getListData());
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     //Mengambil data dari internet masuk ke Data Github
                     assert response.body() != null;
-//                    dataModelUser = response.body().getItems();
+                    dataModelUser = (ArrayList<Pojogithub>) response.body().getItems();
                     //Set Adapter ke Recycler View
                     AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) dataModelUser);
                     rvProfilgithub.setAdapter(adapterGithubapp);
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onQueryTextSubmit(String s) {
                     showProgress(true);
                     if (s != null) {
-//                        getDataOnline(s);
+                        getDataOnline(s);
                     } else {
                         Toast.makeText(MainActivity.this, "Insert Username First", Toast.LENGTH_SHORT).show();
                     }
