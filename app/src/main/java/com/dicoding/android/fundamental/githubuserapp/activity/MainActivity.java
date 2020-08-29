@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         /*Create handle for the RetrofitInstance interface*/
         GithubService service = ServiceGenerator.getRetrofitInstance().create(GithubService.class);
         Call<List<Pojogithub>> calls = service.getUsers(10,1);
-//        Call<Pojogithub> call = service.getUser();
         calls.enqueue(new Callback<List<Pojogithub>>() {
             @Override
             public void onResponse(Call<List<Pojogithub>> call, Response<List<Pojogithub>> response) {
@@ -126,34 +125,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-//        GithubService service = ServiceGenerator.getRetrofitInstance().create(GithubService.class);
-//        Call<Pojogithub> calls = service.getUser(username);
-//        calls.enqueue(new Callback<Pojogithub>() {
-//            @Override
-//            public void onResponse(Call<Pojogithub> call, Response<Pojogithub> response) {
-//                if (response.isSuccessful()) {
-//                    //Mengambil data dari internet masuk ke Data Github
-//                    assert response.body() != null;
-//                    dataModelUser = response.body().get;
-//                    //Set Adapter ke Recycler View
-//                    AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) dataModelUser);
-//                    rvProfilgithub.setAdapter(adapterGithubapp);
-//                    showProgress(false);
-//                }
-//                else {
-//                    Toast.makeText(MainActivity.this, "Request Failed", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Pojogithub> call, Throwable t) {
-//                Toast.makeText(MainActivity.this, "Request Failure" + t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
-
-
 
 
     private void showRecyclerList(){
