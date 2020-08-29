@@ -87,8 +87,8 @@ public class AdapterGithubapp extends RecyclerView.Adapter<AdapterGithubapp.View
         }
 
         public void setData(Pojogithub data){
-            ivprofil.setImageResource(data.getIvprofill());
-            usernamelist.setText(data.getUsername());
+//            ivprofil.setImageResource(data.getIvprofill());
+//            usernamelist.setText(data.getUsername());
 
         }
     }

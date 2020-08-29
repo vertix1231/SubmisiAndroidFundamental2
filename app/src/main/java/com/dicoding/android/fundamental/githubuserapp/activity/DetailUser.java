@@ -50,20 +50,20 @@ public class DetailUser extends AppCompatActivity {
         name = pojogithub.getUsername();
         tvname.setText(name);
 
-        company = pojogithub.getCompany();
-        tvcompany.setText(company);
-
-        location = pojogithub.getLocation();
-        tvlocation.setText(location);
-
-        repository = pojogithub.getRepository();
-        tvrepository.setText(repository);
-
-        follower = pojogithub.getFollower();
-        tvfollower.setText(follower);
-
-        following = pojogithub.getFollowing();
-        tvfollowing.setText(following);
+//        company = pojogithub.getCompany();
+//        tvcompany.setText(company);
+//
+//        location = pojogithub.getLocation();
+//        tvlocation.setText(location);
+//
+//        repository = pojogithub.getRepository();
+//        tvrepository.setText(repository);
+//
+//        follower = pojogithub.getFollower();
+//        tvfollower.setText(follower);
+//
+//        following = pojogithub.getFollowing();
+//        tvfollowing.setText(following);
 
 
 

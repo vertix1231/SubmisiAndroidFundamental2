@@ -25,6 +25,7 @@ import com.dicoding.android.fundamental.githubuserapp.R;
 import com.dicoding.android.fundamental.githubuserapp.adapter.AdapterGithubapp;
 import com.dicoding.android.fundamental.githubuserapp.nethelper.ServiceGenerator;
 import com.dicoding.android.fundamental.githubuserapp.pojo.Pojogithub;
+import com.dicoding.android.fundamental.githubuserapp.pojo.Responses;
 import com.dicoding.android.fundamental.githubuserapp.service.GithubService;
 
 import java.util.ArrayList;
@@ -93,16 +94,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     private void getDataOnline(final String username) {
-//        Call<Pojogithub> requests = (Call<Pojogithub>) ServiceGenerator.getRetrofitInstance().create(GithubService.class);
-        GithubService service = ServiceGenerator.getRetrofitInstance().create(GithubService.class);
-        Call<Pojogithub> calls = service.getUser(username);
-        calls.enqueue(new Callback<Pojogithub>() {
+        Call<Responses> service = ServiceGenerator.getRetrofitInstance().create(GithubService.class).getSearchUser(username);
+        service.enqueue(new Callback<Responses>() {
             @Override
-            public void onResponse(Call<Pojogithub> call, Response<Pojogithub> response) {
+            public void onResponse(Call<Responses> call, Response<Responses> response) {
                 if (response.isSuccessful()) {
                     //Mengambil data dari internet masuk ke Data Github
                     assert response.body() != null;
+                    if(dataModelUser == null){
+                        dataModelUser = new ArrayList<>();
+                    }
                     dataModelUser = (ArrayList<Pojogithub>) response.body().getItems();
                     //Set Adapter ke Recycler View
                     AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) dataModelUser);
@@ -112,14 +116,41 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     Toast.makeText(MainActivity.this, "Request Failed", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
-            public void onFailure(Call<Pojogithub> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Request Failure" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Responses> call, Throwable t) {
+
             }
         });
+
     }
+//        GithubService service = ServiceGenerator.getRetrofitInstance().create(GithubService.class);
+//        Call<Pojogithub> calls = service.getUser(username);
+//        calls.enqueue(new Callback<Pojogithub>() {
+//            @Override
+//            public void onResponse(Call<Pojogithub> call, Response<Pojogithub> response) {
+//                if (response.isSuccessful()) {
+//                    //Mengambil data dari internet masuk ke Data Github
+//                    assert response.body() != null;
+//                    dataModelUser = response.body().get;
+//                    //Set Adapter ke Recycler View
+//                    AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) dataModelUser);
+//                    rvProfilgithub.setAdapter(adapterGithubapp);
+//                    showProgress(false);
+//                }
+//                else {
+//                    Toast.makeText(MainActivity.this, "Request Failed", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Pojogithub> call, Throwable t) {
+//                Toast.makeText(MainActivity.this, "Request Failure" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
 
 
