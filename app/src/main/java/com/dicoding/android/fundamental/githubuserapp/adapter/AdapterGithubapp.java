@@ -2,6 +2,7 @@ package com.dicoding.android.fundamental.githubuserapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ public class AdapterGithubapp extends RecyclerView.Adapter<AdapterGithubapp.View
 
     Context context;
     ArrayList<Pojogithub> dataModelUser;
+    public static final String DATA_USER = "userdata";
+    public static final String DATA_EXTRA = "extradata";
 
 
     public AdapterGithubapp(Context context, ArrayList<Pojogithub> dataModelUser) {
@@ -48,21 +51,32 @@ public class AdapterGithubapp extends RecyclerView.Adapter<AdapterGithubapp.View
         builder.build().load(dataModelUser.get(position).getIvprofil()).placeholder((R.drawable.ic_launcher_background))
                 .error(R.drawable.ic_launcher_background).into(holder.ivprofil);
         holder.usernamelist.setText(dataModelUser.get(position).getUsername());
-        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                Picasso.Builder builder = new Picasso.Builder(context);
-//                builder.downloader(new OkHttp3Downloader(context));
-//                builder.build().load(dataModelUser.get(position).getIvprofil()).placeholder((R.drawable.ic_launcher_background))
-//                .error(R.drawable.ic_launcher_background).into(holder.ivprofil);
+                Intent intent = new Intent(context, DetailUser.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(DATA_USER,dataModelUser.get(position));
+                intent.putExtra(DATA_EXTRA,bundle);
+                Toast.makeText(holder.constraintLayout.getContext(),"kamu memilih user "+dataModelUser.get(holder.getAdapterPosition()).getUsername(),Toast.LENGTH_LONG).show();
+                context.startActivity(intent);
+//                intent.putExtra("extra_github",dataModelUser.get(position));
+//                context.startActivity(intent);
 
+            }
+        });
+//        holder.constraintLayout.setOnClickListener  (new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
 //                Intent intent = new Intent(context, DetailUser.class);
 //                intent.putExtra("extra_github",dataModelUser.get(position));
 //                Toast.makeText(holder.constraintLayout.getContext(),"kamu memilih user "+dataModelUser.get(holder.getAdapterPosition()).getUsername(),Toast.LENGTH_LONG).show();
 //                context.startActivity(intent);
-            }
-        });
+//            }
+//        });
 //        holder.setData(dataModelUser.get(position));
 
     }

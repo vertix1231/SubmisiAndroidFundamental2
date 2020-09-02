@@ -1,5 +1,8 @@
 package com.dicoding.android.fundamental.githubuserapp.service;
 
+import com.dicoding.android.fundamental.githubuserapp.pojo.PojoDetail;
+import com.dicoding.android.fundamental.githubuserapp.pojo.PojoFollowers;
+import com.dicoding.android.fundamental.githubuserapp.pojo.PojoFollowing;
 import com.dicoding.android.fundamental.githubuserapp.pojo.Pojogithub;
 import com.dicoding.android.fundamental.githubuserapp.pojo.Responses;
 
@@ -27,5 +30,23 @@ public interface GithubService {
             @Query("q") String username
     );
 
+    @GET("users/{username}")
+    @Headers("Authorization: token 51d73a3ceeac29f861a0c8b4895dd9b51ebd9799")
+    Call<PojoDetail> getDetailUser(
+            @Path("username") String username
+    );
+
+    @GET("users/{username}/followers")
+    @Headers("Authorization: token 51d73a3ceeac29f861a0c8b4895dd9b51ebd9799")
+        //<list> soalnya modelnya dibungkus array karena data ne banyak
+    Call<List<PojoFollowers>> getFollowerUser(
+            @Path("username") String username
+    );
+
+    @GET("users/{username}/following")
+    @Headers("Authorization: token 51d73a3ceeac29f861a0c8b4895dd9b51ebd9799")
+    Call<List<PojoFollowing>> getFollowingUser(
+            @Path("username") String username
+    );
 
 }
