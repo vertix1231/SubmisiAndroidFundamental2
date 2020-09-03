@@ -1,6 +1,5 @@
 package com.dicoding.android.fundamental.githubuserapp.service;
 
-import com.dicoding.android.fundamental.githubuserapp.pojo.PojoDetail;
 import com.dicoding.android.fundamental.githubuserapp.pojo.PojoFollowers;
 import com.dicoding.android.fundamental.githubuserapp.pojo.PojoFollowing;
 import com.dicoding.android.fundamental.githubuserapp.pojo.Pojogithub;
@@ -20,6 +19,10 @@ public interface GithubService {
     @Headers("Authorization: token 51d73a3ceeac29f861a0c8b4895dd9b51ebd9799")
     public Call<List<Pojogithub>> getUsers(@Query("per_page") int perPage, @Query("page") int page);
 
+//    @GET("/userss")
+//    @Headers("Authorization: token 51d73a3ceeac29f861a0c8b4895dd9b51ebd9799")
+//    public Call<List<Pojogithub>> getUserss(@Query("q") String username);
+
     @GET("/users/{username}")
     @Headers("Authorization: token 51d73a3ceeac29f861a0c8b4895dd9b51ebd9799")
     public Call<Pojogithub> getUser(@Path("username") String username);
@@ -32,7 +35,7 @@ public interface GithubService {
 
     @GET("users/{username}")
     @Headers("Authorization: token 51d73a3ceeac29f861a0c8b4895dd9b51ebd9799")
-    Call<PojoDetail> getDetailUser(
+    Call<Pojogithub> getDetailUser(
             @Path("username") String username
     );
 

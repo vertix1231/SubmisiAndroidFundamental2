@@ -22,8 +22,8 @@ public class Pojogithub implements Parcelable {
     @SerializedName("avatar_url")
     private String ivprofil;
 
-
-//    private int ivprofill;
+    @SerializedName("name")
+    private String name;
 
     @SerializedName("url")
     private String url;
@@ -51,6 +51,9 @@ public class Pojogithub implements Parcelable {
 
     @SerializedName("repos_url")
     private String repository;
+
+    @SerializedName("public_repos")
+    private String publicRepos;
 
     public long getId() {
         return id;
@@ -82,6 +85,14 @@ public class Pojogithub implements Parcelable {
 
     public void setIvprofil(String ivprofil) {
         this.ivprofil = ivprofil;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUrl() {
@@ -156,11 +167,20 @@ public class Pojogithub implements Parcelable {
         this.repository = repository;
     }
 
-    public Pojogithub(long id, String location, String username, String ivprofil, String url, String htmlUrl, String follower, String following, String gistsUrl, String starredUrl, String subscriptionsUrl, String company, String repository) {
+    public String getPublicRepos() {
+        return publicRepos;
+    }
+
+    public void setPublicRepos(String publicRepos) {
+        this.publicRepos = publicRepos;
+    }
+
+    public Pojogithub(long id, String location, String username, String ivprofil, String name, String url, String htmlUrl, String follower, String following, String gistsUrl, String starredUrl, String subscriptionsUrl, String company, String repository, String publicRepos) {
         this.id = id;
         this.location = location;
         this.username = username;
         this.ivprofil = ivprofil;
+        this.name = name;
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.follower = follower;
@@ -170,6 +190,7 @@ public class Pojogithub implements Parcelable {
         this.subscriptionsUrl = subscriptionsUrl;
         this.company = company;
         this.repository = repository;
+        this.publicRepos = publicRepos;
     }
 
     public Pojogithub() {
@@ -186,6 +207,7 @@ public class Pojogithub implements Parcelable {
         dest.writeString(this.location);
         dest.writeString(this.username);
         dest.writeString(this.ivprofil);
+        dest.writeString(this.name);
         dest.writeString(this.url);
         dest.writeString(this.htmlUrl);
         dest.writeString(this.follower);
@@ -195,6 +217,7 @@ public class Pojogithub implements Parcelable {
         dest.writeString(this.subscriptionsUrl);
         dest.writeString(this.company);
         dest.writeString(this.repository);
+        dest.writeString(this.publicRepos);
     }
 
     protected Pojogithub(Parcel in) {
@@ -202,6 +225,7 @@ public class Pojogithub implements Parcelable {
         this.location = in.readString();
         this.username = in.readString();
         this.ivprofil = in.readString();
+        this.name = in.readString();
         this.url = in.readString();
         this.htmlUrl = in.readString();
         this.follower = in.readString();
@@ -211,6 +235,7 @@ public class Pojogithub implements Parcelable {
         this.subscriptionsUrl = in.readString();
         this.company = in.readString();
         this.repository = in.readString();
+        this.publicRepos = in.readString();
     }
 
     public static final Creator<Pojogithub> CREATOR = new Creator<Pojogithub>() {

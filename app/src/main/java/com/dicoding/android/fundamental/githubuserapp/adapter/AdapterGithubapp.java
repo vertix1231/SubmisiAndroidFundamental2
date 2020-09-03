@@ -61,8 +61,7 @@ public class AdapterGithubapp extends RecyclerView.Adapter<AdapterGithubapp.View
                 intent.putExtra(DATA_EXTRA,bundle);
                 Toast.makeText(holder.constraintLayout.getContext(),"kamu memilih user "+dataModelUser.get(holder.getAdapterPosition()).getUsername(),Toast.LENGTH_LONG).show();
                 context.startActivity(intent);
-//                intent.putExtra("extra_github",dataModelUser.get(position));
-//                context.startActivity(intent);
+
 
             }
         });
