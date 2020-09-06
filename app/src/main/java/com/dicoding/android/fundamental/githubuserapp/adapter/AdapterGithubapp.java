@@ -65,18 +65,6 @@ public class AdapterGithubapp extends RecyclerView.Adapter<AdapterGithubapp.View
 
             }
         });
-//        holder.constraintLayout.setOnClickListener  (new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//                Intent intent = new Intent(context, DetailUser.class);
-//                intent.putExtra("extra_github",dataModelUser.get(position));
-//                Toast.makeText(holder.constraintLayout.getContext(),"kamu memilih user "+dataModelUser.get(holder.getAdapterPosition()).getUsername(),Toast.LENGTH_LONG).show();
-//                context.startActivity(intent);
-//            }
-//        });
-//        holder.setData(dataModelUser.get(position));
 
     }
 

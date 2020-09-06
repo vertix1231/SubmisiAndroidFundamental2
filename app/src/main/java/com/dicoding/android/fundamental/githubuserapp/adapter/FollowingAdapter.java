@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dicoding.android.fundamental.githubuserapp.R;
 import com.dicoding.android.fundamental.githubuserapp.pojo.Pojogithub;
+import com.squareup.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,6 +37,11 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.Foll
 
     @Override
     public void onBindViewHolder(@NonNull FollowingViewHolder holder, int position) {
+        Picasso.Builder builder = new Picasso.Builder(context);
+        builder.downloader(new OkHttp3Downloader(context));
+        builder.build().load(dataModelUser.get(position).getIvprofil()).placeholder((R.drawable.ic_launcher_background))
+                .error(R.drawable.ic_launcher_background).into(holder.ivprofil);
+        holder.usernamelist.setText(dataModelUser.get(position).getUsername());
 
     }
 

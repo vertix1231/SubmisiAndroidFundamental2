@@ -39,7 +39,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rvProfilgithub;
-//    private List<Pojogithub> dataModelUser = new ArrayList<>();
     private ArrayList<Pojogithub> dataModelUser = new ArrayList<>();
     private  TextView username;
     private CircleImageView profillist;
