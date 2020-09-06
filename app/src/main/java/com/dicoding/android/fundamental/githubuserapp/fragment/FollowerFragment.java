@@ -45,6 +45,7 @@ public class FollowerFragment extends Fragment {
     private ProgressBar progress;
     Context context;
     PojoFollowers pojoFollowers;
+    Pojogithub pojogithub;
 
     public FollowerFragment() {
         // Required empty public constructor
@@ -75,7 +76,7 @@ public class FollowerFragment extends Fragment {
                     if (response.body() != null){
                         ArrayList<PojoFollowers> followerslist = new ArrayList<>(response.body());
                         Log.d("Result", "Response: " +followerslist.size());
-                        rvProfilgithub_follower.setAdapter(new FollowersAdapter(getContext(), followerslist));
+                        rvProfilgithub_follower.setAdapter(new FollowersAdapter(context, followerslist));
                     }
                 } else {
                     Toast.makeText(getContext(), "Request Failed", Toast.LENGTH_SHORT).show();
