@@ -1,8 +1,11 @@
 package com.dicoding.android.fundamental.githubuserapp.pojo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class PojoFollowing {
+public class PojoFollowing implements Parcelable {
 
     @SerializedName("login")
     private String login;
@@ -45,4 +48,34 @@ public class PojoFollowing {
 
     public PojoFollowing() {
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.login);
+        dest.writeString(this.avatarUrl);
+        dest.writeInt(this.id);
+    }
+
+    protected PojoFollowing(Parcel in) {
+        this.login = in.readString();
+        this.avatarUrl = in.readString();
+        this.id = in.readInt();
+    }
+
+    public static final Parcelable.Creator<PojoFollowing> CREATOR = new Parcelable.Creator<PojoFollowing>() {
+        @Override
+        public PojoFollowing createFromParcel(Parcel source) {
+            return new PojoFollowing(source);
+        }
+
+        @Override
+        public PojoFollowing[] newArray(int size) {
+            return new PojoFollowing[size];
+        }
+    };
 }
