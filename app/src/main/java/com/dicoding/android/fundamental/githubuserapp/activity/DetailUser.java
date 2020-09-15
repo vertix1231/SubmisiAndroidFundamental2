@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
-import android.app.Service;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -17,8 +15,6 @@ import com.dicoding.android.fundamental.githubuserapp.pojo.Pojogithub;
 import com.dicoding.android.fundamental.githubuserapp.service.GithubService;
 import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -86,6 +82,8 @@ public class DetailUser extends AppCompatActivity {
 
                 progressbar.dismiss();
 
+//                setFragment();
+
 
             }
 
@@ -95,20 +93,7 @@ public class DetailUser extends AppCompatActivity {
             }
         });
 
-
-
-
-
-//        follower = pojogithub.getFollower();
-//        tvfollower.setText(follower);
-//
-//        following = pojogithub.getFollowing();
-//        tvfollowing.setText(following);
-
-
-
-
-        FragmentPagerAdapterDetailProfil fragmentPagerAdapterDetailProfil = new FragmentPagerAdapterDetailProfil(this, getSupportFragmentManager());
+        FragmentPagerAdapterDetailProfil fragmentPagerAdapterDetailProfil = new FragmentPagerAdapterDetailProfil(this, getSupportFragmentManager(), pojogithub.getUsername());
         ViewPager viewPager = findViewById(R.id.vpdetailprofil);
         viewPager.setAdapter(fragmentPagerAdapterDetailProfil);
         TabLayout tabs = findViewById(R.id.tldetailprofil);

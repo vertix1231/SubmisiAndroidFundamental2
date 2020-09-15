@@ -15,9 +15,11 @@ import com.dicoding.android.fundamental.githubuserapp.fragment.FollowingFragment
 
 public class FragmentPagerAdapterDetailProfil extends FragmentPagerAdapter {
     private final Context mContext;
-    public FragmentPagerAdapterDetailProfil(Context context, FragmentManager fm) {
+    private final String login;
+    public FragmentPagerAdapterDetailProfil(Context context, FragmentManager fm, String login) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mContext = context;
+        this.login = login;
     }
 
     @StringRes
@@ -38,10 +40,10 @@ public class FragmentPagerAdapterDetailProfil extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position){
             case 0:
-                fragment = new FollowerFragment();
+                fragment = FollowerFragment.newInstance(login);
                 break;
             case 1:
-                fragment = new FollowingFragment();
+                fragment = FollowingFragment.newInstance(login);
                 break;
         }
         return fragment;

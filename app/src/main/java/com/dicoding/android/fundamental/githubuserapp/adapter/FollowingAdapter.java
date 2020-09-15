@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dicoding.android.fundamental.githubuserapp.R;
+import com.dicoding.android.fundamental.githubuserapp.pojo.PojoFollowing;
 import com.dicoding.android.fundamental.githubuserapp.pojo.Pojogithub;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
@@ -21,9 +22,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.FollowingViewHolder> {
     Context context;
-    ArrayList<Pojogithub> dataModelUser;
+    ArrayList<PojoFollowing> dataModelUser;
 
-    public FollowingAdapter(Context context, ArrayList<Pojogithub> dataModelUser) {
+    public FollowingAdapter(Context context, ArrayList<PojoFollowing> dataModelUser) {
         this.context = context;
         this.dataModelUser = dataModelUser;
     }
@@ -39,9 +40,9 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.Foll
     public void onBindViewHolder(@NonNull FollowingViewHolder holder, int position) {
         Picasso.Builder builder = new Picasso.Builder(context);
         builder.downloader(new OkHttp3Downloader(context));
-        builder.build().load(dataModelUser.get(position).getIvprofil()).placeholder((R.drawable.ic_launcher_background))
+        builder.build().load(dataModelUser.get(position).getAvatarUrl()).placeholder((R.drawable.ic_launcher_background))
                 .error(R.drawable.ic_launcher_background).into(holder.ivprofil);
-        holder.usernamelist.setText(dataModelUser.get(position).getUsername());
+        holder.usernamelist.setText(dataModelUser.get(position).getLogin());
 
     }
 
