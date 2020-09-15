@@ -13,7 +13,7 @@
     <string name="this_fragment">Ini adalah menu fragment</string>
     <string name="search">Cari</string>
     <string name="menu_1">Menu1</string>
-    <string name="menu_2">Menu 2</string>
+    <string name="menu_2">Ganti Bahasa</string>
 
     <string name="search_hint">Masukkan kata</string>
 
@@ -21,6 +21,7 @@
     <string name="tab_text_2">Following</string>
 
     <string name="progress">Memuat…</string>
+    <string name="user_pilih">kamu memilih user</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

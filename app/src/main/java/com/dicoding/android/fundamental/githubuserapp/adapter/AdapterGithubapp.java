@@ -59,7 +59,7 @@ public class AdapterGithubapp extends RecyclerView.Adapter<AdapterGithubapp.View
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(DATA_USER,dataModelUser.get(position));
                 intent.putExtra(DATA_EXTRA,bundle);
-                Toast.makeText(holder.constraintLayout.getContext(),"kamu memilih user "+dataModelUser.get(holder.getAdapterPosition()).getUsername(),Toast.LENGTH_LONG).show();
+                Toast.makeText(holder.constraintLayout.getContext(),"user: "+dataModelUser.get(holder.getAdapterPosition()).getUsername(),Toast.LENGTH_LONG).show();
                 context.startActivity(intent);
 
 

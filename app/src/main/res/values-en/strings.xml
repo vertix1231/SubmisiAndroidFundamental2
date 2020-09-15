@@ -15,7 +15,7 @@
     <string name="this_fragment">this is menu fragment</string>
     <string name="search">Search</string>
     <string name="menu_1">Menu1</string>
-    <string name="menu_2">Menu 2</string>
+    <string name="menu_2">Change Languange</string>
 
     <string name="search_hint">Input Word</string>
 
@@ -23,6 +23,7 @@
     <string name="tab_text_2">Following</string>
 
     <string name="progress">Loading…</string>
+    <string name="user_pilih">you are choosing user</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
