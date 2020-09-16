@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Pojogithub>> call, Response<List<Pojogithub>> response) {
                 progressDoalog.dismiss();
                 List<Pojogithub> results = response.body();
-                AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) results);
+                AdapterGithubapp adapterGithubapp = new AdapterGithubapp(MainActivity.this, (ArrayList<Pojogithub>) results);
                 rvProfilgithub.setAdapter(adapterGithubapp);
 //                showRecyclerListApi(response.body());
 

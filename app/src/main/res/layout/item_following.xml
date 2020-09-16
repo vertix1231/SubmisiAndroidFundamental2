@@ -12,9 +12,16 @@
         android:id="@+id/ivImage_following"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="329dp"
+        android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvusernamelist_following"
