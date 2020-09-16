@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     dataModelUser = (ArrayList<Pojogithub>) response.body().getItems();
                     //Set Adapter ke Recycler View
-                    AdapterGithubapp adapterGithubapp = new AdapterGithubapp(getApplicationContext(), (ArrayList<Pojogithub>) dataModelUser);
+                    AdapterGithubapp adapterGithubapp = new AdapterGithubapp(MainActivity.this,  dataModelUser);
                     rvProfilgithub.setAdapter(adapterGithubapp);
                     showProgress(false);
                 }
